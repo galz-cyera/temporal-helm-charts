@@ -158,6 +158,17 @@ server:
           #   tx_isolation: 'READ-COMMITTED'
 
   frontend:
+    ingress:
+      enabled: false
+      annotations: {}
+      hosts:
+        - "/"
+        # - "domain.com/xyz"
+        # - "domain.com"
+      tls: [ ]
+      #  - secretName: chart-example-tls
+      #    hosts:
+      #      - chart-example.local
     # replicaCount: 1
     service:
       annotations: {} # Evaluated as template

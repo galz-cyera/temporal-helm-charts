@@ -106,13 +106,13 @@ spec:
             - name: TEMPORAL_STORE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "temporal.persistence.secretName" (list $ "default") }}
-                  key: {{ include "temporal.persistence.secretKey" (list $ "default") }}
+                  name: {{ $.Values.server.config.persistence.default.sql.secretName }}
+                  key: {{ $.Values.server.config.persistence.default.sql.secretKey }}
             - name: TEMPORAL_VISIBILITY_STORE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "temporal.persistence.secretName" (list $ "visibility") }}
-                  key: {{ include "temporal.persistence.secretKey" (list $ "visibility") }}
+                  name: {{ $.Values.server.config.persistence.visibility.sql.secretName }}
+                  key: {{ $.Values.server.config.persistence.visibility.sql.secretKey }}
           {{- if $.Values.server.versionCheckDisabled }}
             - name: TEMPORAL_VERSION_CHECK_DISABLED
               value: "1"
